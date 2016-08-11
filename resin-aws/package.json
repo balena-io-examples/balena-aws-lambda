@@ -1,0 +1,71 @@
+{
+  "_args": [
+    [
+      "resin-aws@1.0.3",
+      "/Users/gaudi/Documents/aws"
+    ]
+  ],
+  "_from": "resin-aws@1.0.3",
+  "_id": "resin-aws@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/resin-aws",
+  "_nodeVersion": "4.2.2",
+  "_npmOperationalInternal": {
+    "host": "packages-5-east.internal.npmjs.com",
+    "tmp": "tmp/resin-aws-1.0.3.tgz_1455988816110_0.5636031739413738"
+  },
+  "_npmUser": {
+    "email": "craig@resin.io",
+    "name": "craig-mulligan"
+  },
+  "_npmVersion": "3.7.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "resin-aws",
+    "raw": "resin-aws@1.0.3",
+    "rawSpec": "1.0.3",
+    "scope": null,
+    "spec": "1.0.3",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_shasum": "3c4b8be8b5e95acdeb5cb666cc05b5bbb240038f",
+  "_shrinkwrap": null,
+  "_spec": "resin-aws@1.0.3",
+  "_where": "/Users/gaudi/Documents/aws",
+  "author": {
+    "name": "Craig Mulligan"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.37",
+    "bluebird": "^3.3.1"
+  },
+  "description": "Small promise chain to create aws IoT thing, cert and policy",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "3c4b8be8b5e95acdeb5cb666cc05b5bbb240038f",
+    "tarball": "http://registry.npmjs.org/resin-aws/-/resin-aws-1.0.3.tgz"
+  },
+  "keywords": [
+    "IoT"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "craig@resin.io",
+      "name": "craig-mulligan"
+    }
+  ],
+  "name": "resin-aws",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}
