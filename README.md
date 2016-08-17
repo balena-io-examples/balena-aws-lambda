@@ -45,7 +45,7 @@ You should get a lovely success message. And you should have a AWS thing with an
 Now we are ready to deploy to AWS. Ensure you have Added you're resin credentials to `deploy.env` first then run:
 
 ```
-node-lambda deploy
+node-lambda deploy -f deploy.env 
 ```
 
 ![lambdaTrigger](/docs/lambdaTrigger.png)
