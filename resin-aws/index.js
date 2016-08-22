@@ -64,14 +64,12 @@ module.exports = {
         //Handle any error
         reject(err)
       }).then(function(){
-        // regex to replace the line breaks so they can be stored as resin envars
-        var lineBreak = /\r\n|\n/ig;
-        var pattern = '#####'
+        // encode it so that line breaks so that line-breaks can be stored as resin envars
         resolve({
           AWS_CERT_ARN: awsThing.cert.certificateArn,
-          AWS_CERT: awsThing.cert.certificatePem.replace(lineBreak, pattern),
-          AWS_PRIVATE_KEY: awsThing.cert.keyPair.PrivateKey.replace(lineBreak, pattern),
-          AWS_ROOT_CA: awsThing.cert.rootCA.replace(lineBreak, pattern)
+          AWS_CERT: new Buffer(awsThing.cert.certificatePem).toString('base64'),
+          AWS_PRIVATE_KEY: new Buffer(awsThing.cert.keyPair.PrivateKey).toString('base64'),
+          AWS_ROOT_CA: new Buffer(awsThing.cert.rootCA).toString('base64')
         });
       });
     });
