@@ -3,3 +3,4 @@
 .env
 deploy.env
 event.json
+.lambda

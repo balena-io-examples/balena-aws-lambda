@@ -1,4 +1,6 @@
 {
-  "uuid": "2ea3ceec629ad01445cd5de97d6e621b9551203acdd7ff316259fd46441e2d",
+  "body": {
+  "uuid": "9b885b7b29528852f43d44768d5c6015",
   "attributes": { "someKey": "someVal" }
+  }
 }
