@@ -58,6 +58,6 @@ Then login to AWS console and visit the lambda console, you should see a fresh n
 
 Now we have an public endpoint for the devices to request to be provisioned.
 
-All that's left to do deploy the [device portion](https://github.com/craig-mulligan/resin-aws-lambda) to the devices. And your resin.io app has the right [environment variables configured](https://github.com/craig-mulligan/resin-aws-device#add-a-few-resin-app-environment-variables)
+All that's left to do deploy the [device portion](https://github.com/resin-io-projects/resin-aws-device) to the devices. And your resin.io app has the right [environment variables configured](https://github.com/craig-mulligan/resin-aws-device#add-a-few-resin-app-environment-variables)
 
 NOTE: During testing you may want to flush, both resin.io environment variables and AWS IoT things, policies and certificates so I've created a [couple scripts](https://github.com/craig-mulligan/aws-reset-scripts) to do that.
