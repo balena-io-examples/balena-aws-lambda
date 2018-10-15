@@ -1,6 +1,6 @@
-# resin-lambda-service
+# balena-lambda-service
 
-This is a lambda function which creates the relevant certificates and policies needed for AWS IoT and sets them as per device environment variables on the resin.io device which invoked the Lambda function. The device can then use the set environment variables to authenticate requests to the AWS IoT API.  
+This is a lambda function which creates the relevant certificates and policies needed for AWS IoT and sets them as per device environment variables on the balena device which invoked the Lambda function. The device can then use the set environment variables to authenticate requests to the AWS IoT API.  
 
 ## Use Case
 
@@ -10,7 +10,7 @@ This is a lambda function which creates the relevant certificates and policies n
 
 Clone this repo
 ```
-$ git clone https://github.com/craig-mulligan/resin-aws-lambda
+$ git clone https://github.com/balena-projects/balena-aws-lambda
 ```
 
 I use [node-lambda](https://github.com/motdotla/node-lambda) to handle testing and deployment.
@@ -32,7 +32,7 @@ Fill in your details in `env.json` you'll need the following vars:
 
 Variables from `.env` are injected when running locally allowing you to easy test the function with out deploying.
 
-You'll also need to simulate event data for test. There is some dummy data in `event.json`, if you like you can replace the `uuid` with a real resin.io devices UUID.
+You'll also need to simulate event data for test. There is some dummy data in `event.json`, if you like you can replace the `uuid` with a real balena devices UUID.
 
 Once those two files are ready, run:
 
@@ -40,12 +40,12 @@ Once those two files are ready, run:
 node-lambda run
 ```
 
-You should get a lovely success message. And you should have a AWS thing with an attached policy and certificate in the AWS IoT console. You'll also have [resin.io environment variables](http://docs.resin.io/management/env-vars/#per-device) set on each the device you specified in `event.json`.
+You should get a lovely success message. And you should have a AWS thing with an attached policy and certificate in the AWS IoT console. You'll also have [balena environment variables](http://docs.balena.io/management/env-vars/#per-device) set on each the device you specified in `event.json`.
 
-Now we are ready to deploy to AWS. Ensure you have Added you're resin credentials to `deploy.env` first then run:
+Now we are ready to deploy to AWS. Ensure you have Added your balena credentials to `deploy.env` first then run:
 
 ```
-node-lambda deploy -f deploy.env 
+node-lambda deploy -f deploy.env
 ```
 
 ![lambdaTrigger](/docs/lambdaTrigger.png)
@@ -54,10 +54,10 @@ Then login to AWS console and visit the lambda console, you should see a fresh n
 
 ![lambdaTrigger](/docs/awsIoT.png)
 
-![resinEnvars](/docs/resinEnvars.png)
+![balenaEnvars](/docs/balenaEnvars.png)
 
 Now we have an public endpoint for the devices to request to be provisioned.
 
-All that's left to do deploy the [device portion](https://github.com/resin-io-projects/resin-aws-device) to the devices. And your resin.io app has the right [environment variables configured](https://github.com/craig-mulligan/resin-aws-device#add-a-few-resin-app-environment-variables)
+All that's left to do deploy the [device portion](https://github.com/balena-projects/balena-aws-device) to the devices. And your balena app has the right [environment variables configured](https://github.com/balena-projects/balena-aws-device#add-a-few-environment-variables)
 
-NOTE: During testing you may want to flush, both resin.io environment variables and AWS IoT things, policies and certificates so I've created a [couple scripts](https://github.com/craig-mulligan/aws-reset-scripts) to do that.
+NOTE: During testing you may want to flush, both balena environment variables and AWS IoT things, policies and certificates so I've created a [couple scripts](https://github.com/craig-mulligan/aws-reset-scripts) to do that.
