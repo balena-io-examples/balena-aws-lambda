@@ -40,7 +40,7 @@ Once those two files are ready, run:
 node-lambda run
 ```
 
-You should get a lovely success message. And you should have a AWS thing with an attached policy and certificate in the AWS IoT console. You'll also have [balena environment variables](http://docs.balena.io/management/env-vars/#per-device) set on each the device you specified in `event.json`.
+You should get a lovely success message. And you should have a AWS thing with an attached policy and certificate in the AWS IoT console. You'll also have [balena environment variables](http://balena.io/docs/learn/manage/serv-vars/#device-environment-and-service-variables) set on each the device you specified in `event.json`.
 
 Now we are ready to deploy to AWS. Ensure you have Added your balena credentials to `deploy.env` first then run:
 
