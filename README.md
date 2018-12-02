@@ -10,7 +10,7 @@ This is a lambda function which creates the relevant certificates and policies n
 
 Clone this repo
 ```
-$ git clone https://github.com/balena-projects/balena-aws-lambda
+$ git clone https://github.com/balena-io-projects/balena-aws-lambda
 ```
 
 I use [node-lambda](https://github.com/motdotla/node-lambda) to handle testing and deployment.
@@ -58,6 +58,6 @@ Then login to AWS console and visit the lambda console, you should see a fresh n
 
 Now we have an public endpoint for the devices to request to be provisioned.
 
-All that's left to do deploy the [device portion](https://github.com/balena-projects/balena-aws-device) to the devices. And your balena app has the right [environment variables configured](https://github.com/balena-projects/balena-aws-device#add-a-few-environment-variables)
+All that's left to do deploy the [device portion](https://github.com/balena-io-projects/balena-aws-device) to the devices. And your balena app has the right [environment variables configured](https://github.com/balena-io-projects/balena-aws-device#add-a-few-environment-variables)
 
 NOTE: During testing you may want to flush, both balena environment variables and AWS IoT things, policies and certificates so I've created a [couple scripts](https://github.com/craig-mulligan/aws-reset-scripts) to do that.
