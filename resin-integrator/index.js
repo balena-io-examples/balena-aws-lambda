@@ -3,7 +3,8 @@
  This module accepts an object and creates resin.io environment variables with the key value pairs.
 */
 
-var resin = require('resin-sdk');
+var sdk = require('balena-sdk');
+var resin = sdk.fromSharedOptions();
 var Promise = require('bluebird');
 var async = require('async');
 resin = Promise.promisifyAll(resin);
@@ -31,7 +32,7 @@ module.exports = {
     return new Promise(function(resolve, reject){
       async.forEach(Object.keys(obj), function (key, callback){
       var val = obj[key];
-        resin.models.environmentVariables.device.create(deviceUUID, key, val).then(function() {
+        resin.models.device.envVar.set(deviceUUID, key, val).then(function() {
           callback();
         }).catch(function(err) {
           reject(err)
