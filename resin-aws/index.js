@@ -36,7 +36,7 @@ module.exports = {
       }).then(function(res){
         awsThing.cert = res
         // Create AWS IoT rootCA
-        return rp(process.env.ROOTCA_URL || 'https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem')
+        return rp(process.env.ROOTCA_URL || 'https://www.amazontrust.com/repository/AmazonRootCA1.pem')
       }).then(function(res) {
         // Create AWS IoT Policy
         awsThing.cert.rootCA = res
