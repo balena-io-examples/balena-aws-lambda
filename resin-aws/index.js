@@ -10,7 +10,7 @@ var Promise = require('bluebird');
 var AWS = require('aws-sdk');
 var rp = require('request-promise');
 
-var iot = Promise.promisifyAll(new AWS.Iot());
+var iot = Promise.promisifyAll(new AWS.Iot(), {suffix: "AsyncLambda"});
 
 module.exports = {
   // Pass  and attributes object
@@ -29,10 +29,10 @@ module.exports = {
           attributes: deviceAttr
         }
       }
-      iot.createThingAsync(params).then(function (res) {
+      iot.createThingAsyncLambda(params).then(function (res) {
         // Create AWS IoT Certificates
         awsThing.thing = res
-        return iot.createKeysAndCertificateAsync({ setAsActive: true })
+        return iot.createKeysAndCertificateAsyncLambda({ setAsActive: true })
       }).then(function(res){
         awsThing.cert = res
         // Create AWS IoT rootCA
@@ -44,7 +44,7 @@ module.exports = {
           policyDocument: JSON.stringify(policy), /* required */
           policyName: 'PubSubToAnyTopic-' + awsThing.thing.thingName /* required */
         };
-        return iot.createPolicyAsync(params)
+        return iot.createPolicyAsyncLambda(params)
       }).then(function(res){
         awsThing.policy = res
         // Attach AWS IoT Policy + Certificate
@@ -52,14 +52,14 @@ module.exports = {
           policyName: awsThing.policy.policyName, /* required */
           principal: awsThing.cert.certificateArn /* required */
         };
-        iot.attachPrincipalPolicyAsync(params)
+        iot.attachPrincipalPolicyAsyncLambda(params)
       }).then(function(){
         // Attach AWS IoT Policy + Thing
         var params = {
           thingName: awsThing.thing.thingName, /* required */
           principal: awsThing.cert.certificateArn /* required */
         };
-        iot.attachThingPrincipalAsync(params)
+        iot.attachThingPrincipalAsyncLambda(params)
       }).catch(function(err){
         //Handle any error
         reject(err)

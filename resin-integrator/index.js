@@ -7,7 +7,7 @@ var sdk = require('balena-sdk');
 var resin = sdk.fromSharedOptions();
 var Promise = require('bluebird');
 var async = require('async');
-resin = Promise.promisifyAll(resin);
+resin = Promise.promisifyAll(resin, {suffix: "AsyncLambda"});
 module.exports = {
   /**
   Authenticates with resin.io API
