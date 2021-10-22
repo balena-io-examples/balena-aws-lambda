@@ -67,9 +67,9 @@ module.exports = {
         // encode it so that line breaks so that line-breaks can be stored as resin envars
         resolve({
           AWS_CERT_ARN: awsThing.cert.certificateArn,
-          AWS_CERT: new Buffer(awsThing.cert.certificatePem).toString('base64'),
-          AWS_PRIVATE_KEY: new Buffer(awsThing.cert.keyPair.PrivateKey).toString('base64'),
-          AWS_ROOT_CA: new Buffer(awsThing.cert.rootCA).toString('base64')
+          AWS_CERT: Buffer.from(awsThing.cert.certificatePem).toString('base64'),
+          AWS_PRIVATE_KEY: Buffer.from(awsThing.cert.keyPair.PrivateKey).toString('base64'),
+          AWS_ROOT_CA: Buffer.from(awsThing.cert.rootCA).toString('base64')
         });
       });
     });
