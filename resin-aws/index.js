@@ -30,16 +30,8 @@ module.exports = {
         }
       }
       iot.createThingAsyncLambda(params).then(function (res) {
-        // Create AWS IoT Certificates
         awsThing.thing = res
-        return iot.createKeysAndCertificateAsyncLambda({ setAsActive: true })
-      }).then(function(res){
-        awsThing.cert = res
-        // Create AWS IoT rootCA
-        return rp(process.env.ROOTCA_URL || 'https://www.amazontrust.com/repository/AmazonRootCA1.pem')
-      }).then(function(res) {
         // Create AWS IoT Policy
-        awsThing.cert.rootCA = res
         var params = {
           policyDocument: JSON.stringify(policy), /* required */
           policyName: 'PubSubToAnyTopic-' + awsThing.thing.thingName /* required */
@@ -47,6 +39,14 @@ module.exports = {
         return iot.createPolicyAsyncLambda(params)
       }).then(function(res){
         awsThing.policy = res
+        // Create AWS IoT Certificates
+        return iot.createKeysAndCertificateAsyncLambda({ setAsActive: true })
+      }).then(function(res){
+        awsThing.cert = res
+        // Set AWS IoT rootCA
+        return rp(process.env.ROOTCA_URL || 'https://www.amazontrust.com/repository/AmazonRootCA1.pem')
+      }).then(function(res) {
+        awsThing.cert.rootCA = res
         // Attach AWS IoT Policy + Certificate
         var params = {
           policyName: awsThing.policy.policyName, /* required */
