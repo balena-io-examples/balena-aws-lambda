@@ -14,13 +14,15 @@ var policy = require('./policy.json');
 // exports handler for Lambda func
 exports.handler = function(event, context, callback) {
     // handle request
-    if (event) {
+    if (event && event.body) {
         // resin.io credentials
         var resinCreds =  { email: process.env.RESIN_EMAIL, password: process.env.RESIN_PASSWORD }
 
+        //console.log('event ' + JSON.stringify(event));
+        var body = JSON.parse(event.body);
         // get data posted from device
-        var deviceUUID = event.uuid
-        var deviceAttributes = event.attributes
+        var deviceUUID = body.uuid
+        var deviceAttributes = body.attributes
 
         // new lambda API setting
         context.callbackWaitsForEmptyEventLoop = false;
