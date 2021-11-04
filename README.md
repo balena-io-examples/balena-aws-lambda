@@ -25,9 +25,9 @@ Create a `.env` from the provided `env.example`. You'll need the following vars:
 
 | Key                   | Value |
 |-----------------------| ----- |
-| AWS_ACCESS_KEY_ID     | to test with `run` |
+| AWS_ACCESS_KEY_ID     | to test with node-lambda `run` |
 | AWS_SECRET_ACCESS_KEY | key for ID above |
-| AWS_REGION            | for device publishing |
+| AWS_REGION            | for AWS resource (Thing, etc.) provisioning |
 | AWS_ROLE_ARN          | for Lambda execution |
 | RESIN_EMAIL           | authorized to set device variables |
 | RESIN_PASSWORD        | password for email above |
