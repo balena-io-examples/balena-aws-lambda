@@ -1,3 +1,5 @@
+**For balena's current cloud integration tools, see the [Provision with cloud IoT](https://www.balena.io/docs/learn/develop/cloud-iot-provisioning/aws/) docs, [aws-iot-provision](https://github.com/balena-io-examples/aws-iot-provision) repo, and [cloud-relay](https://github.com/balena-io-examples/cloud-relay) repo.**
+
 # balena-aws-lambda
 
 This is an AWS Lambda function that provisions a balena device to publish data to AWS IoT Core. First, it creates an X.509 certificate and publish policy on AWS. Then it sets the relevant environment variables for the balena device so it can initialize a connection to AWS and publish data.
